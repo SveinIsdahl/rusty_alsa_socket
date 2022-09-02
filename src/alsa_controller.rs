@@ -1,5 +1,7 @@
 use alsa::mixer;
 
+
+
 pub fn init_mixer() {
     let mixer: mixer::Mixer = mixer::Mixer::new("default", true).unwrap();
 
@@ -14,7 +16,8 @@ pub fn init_mixer() {
     
     mixer_channel.set_playback_volume_all(1000).unwrap();
     //let vol = mixer_channel.get_id();//mixer_channel.get_playback_volume(mixer::SelemChannelId::Unknown).unwrap();
-    let test = mixer_channel.get_playback_volume(mixer::SelemChannelId::FrontLeft).unwrap();
-    //Loop though enumerator, to handle all channels
-    println!("{test}");
+    let leftVol = mixer_channel.get_playback_volume(mixer::SelemChannelId::FrontLeft).unwrap();
+    let rightVol = mixer_channel.get_playback_volume(mixer::SelemChannelId::FrontRight).unwrap();
+    
+    
 }
